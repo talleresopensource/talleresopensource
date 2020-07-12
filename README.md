@@ -11,4 +11,4 @@ Estamos organizando un ciclo de talleres de herramientas open source útiles par
 ---
 
 Para conocer las necesidades de la comunidad, [realizamos una encuesta](https://forms.gle/a7aSU9ahfirYpJTk7). 
-Los resultados de la encuesta y un analisis muy preliminar se encuentran en [este repositorio].
+Los resultados de la encuesta y un analisis muy preliminar se encuentran en [este sitio](https://github.com/talleresopensource/talleresopensource/blob/master/encuestas/2020-07/2020-07_encuesta_inicial.md).
