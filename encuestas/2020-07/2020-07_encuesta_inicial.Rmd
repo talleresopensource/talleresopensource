@@ -1,0 +1,86 @@
+---
+title: "Encuesta Julio-Agosto 2020"
+date: "`r Sys.Date()`"
+output: rmarkdown::github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE, warning = FALSE)
+```
+
+```{r}
+library(tidyverse)
+```
+
+
+
+
+```{r}
+
+df <- read_csv("2020-07_encuesta_inicial.csv")
+
+
+df %>%
+  select(`Marca temporal`, starts_with("Selecc")) %>%
+  pivot_longer(cols = starts_with("Selecc")) %>%
+  # things between brackets
+  mutate(name = str_extract(name, "\\[.+\\]"),
+         name = gsub(name, pattern = "\\[|\\]", replacement = "")) -> herramientas
+
+```
+
+
+```{r}
+herramientas <- herramientas %>%
+  mutate(no_conoce = ifelse(str_detect(value, "No lo conozco"),
+                            TRUE, FALSE),
+         nunca_uso = ifelse(str_detect(value, "pero nunca"),
+                            TRUE, FALSE),
+         usa = ifelse(str_detect(value, "Lo uso"),
+                            TRUE, FALSE),
+         taller = ifelse(str_detect(value, "asistir"),
+                            TRUE, FALSE))
+
+```
+
+
+Participantes de la encuesta fueron consultados acerca de distintas herramientas y sus ganas de asistir a un taller para adquirir/profundizar conocimiento. 
+
+```{r}
+herramientas %>%
+  group_by(name) %>%
+  count(taller) %>%
+  ungroup() %>% 
+  filter(taller == TRUE) %>%
+  top_n(10) %>% 
+  mutate(name = fct_reorder(name, n)) %>% 
+  ggplot(aes(name, n)) +
+  geom_col()+
+  coord_flip()+
+  labs(title="Los 10 talleres más pedidos",
+       subtitle = "Herramientas según el número de participantes que respondió:\n'Quiero asistir a un taller sobre esto'",
+       x="", y="")
+
+```
+
+La siguiente figura muestra respuestas a "Encuentro que la falta de financiamiento para hardware y software es un factor limitante para mi trabajo" o "Encuentro que la falta de capacitación en hardware y software es un factor limitante para mi trabajo".
+
+```{r}
+ggplot(df,
+       aes(`Encuentro que la falta de financiamiento para hardware y software es un factor limitante para mi trabajo`)) + geom_bar() +
+  labs(title = "Financiamiento",
+    y = "participantes",
+    x = "") -> p1
+
+ggplot(df,
+       aes(`Encuentro que la falta de capacitación en hardware y software es un factor limitante para mi trabajo`)) + geom_bar() +
+  labs(title = "Capacitación",
+    y = "participantes",
+    x = "Nunca < --- > Siempre") -> p2
+
+cowplot::plot_grid(p1, p2, nrow=2)
+
+```
+
+
+En base a estas respuestas decidimos diagramar el primer ciclo de talleres open source!
