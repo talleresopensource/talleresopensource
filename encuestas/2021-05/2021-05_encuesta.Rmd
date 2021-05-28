@@ -21,11 +21,22 @@ df <- read_csv("encuestas.csv")
 
 
 df %>%
-  select(Timestamp, starts_with("Selecc")) %>%
+  select(Timestamp, starts_with("Selecc") & contains("herramienta")) %>%
   pivot_longer(cols = starts_with("Selecc")) %>%
   # things between brackets
   mutate(name = str_extract(name, "\\[.+\\]"),
          name = gsub(name, pattern = "\\[|\\]", replacement = "")) -> herramientas
+
+
+# la segunda encuesta tiene "temas" ademas de herramientas
+df %>% 
+  select(Timestamp, starts_with("Selecc") &
+           contains("tema")) %>% 
+  pivot_longer(cols = starts_with("Selecc")) %>% 
+  mutate(name = str_extract(name, "\\[.+\\]"),
+         name = gsub(name, pattern = "\\[|\\]", replacement = "")) -> temas
+
+  
 
 ```
 
@@ -40,6 +51,17 @@ herramientas <- herramientas %>%
                             TRUE, FALSE),
          taller = ifelse(str_detect(value, "asistir"),
                             TRUE, FALSE))
+
+temas <- temas %>%
+  mutate(no_conoce = ifelse(str_detect(value, "No lo conozco"),
+                            TRUE, FALSE),
+         nunca_uso = ifelse(str_detect(value, "pero nunca"),
+                            TRUE, FALSE),
+         usa = ifelse(str_detect(value, "Lo uso"),
+                            TRUE, FALSE),
+         taller = ifelse(str_detect(value, "asistir"),
+                            TRUE, FALSE))
+
 
 ```
 
@@ -66,6 +88,31 @@ herramientas %>%
        x="", y="")
 
 ```
+
+Participantes de la encuesta fueron consultados acerca de distintos temas y sus ganas de asistir a un taller para adquirir/profundizar conocimiento. 
+
+
+```{r}
+temas %>%   
+# nombres son muy largos, saco los parentesis
+  mutate(name = str_remove_all(name, "\\(.+\\)")) %>% 
+  group_by(name) %>%
+  count(taller) %>%
+  ungroup() %>% 
+  filter(taller == TRUE) %>%
+  top_n(10) %>% 
+  mutate(
+    name = str_wrap(name, width = 30),
+    name = fct_reorder(name, n)) %>% 
+  ggplot(aes(name, n)) +
+  geom_col()+
+  coord_flip()+
+  labs(title="Los temas más pedidos",
+       subtitle = "Temas según el número de participantes que respondió:\n'Quiero asistir a un taller sobre esto'",
+       x="", y="")
+
+```
+
 
 La siguiente figura muestra respuestas a "Encuentro que la falta de financiamiento para hardware y software es un factor limitante para mi trabajo" o "Encuentro que la falta de capacitación en hardware y software es un factor limitante para mi trabajo".
 
