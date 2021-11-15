@@ -2,7 +2,7 @@
 
 Nuestra visión es empoderar a la comunidad científica hispanoparlante con contenido práctico acerca de herramientas abiertas para investigación para lograr que la ciencia en América Latina sea abierta por defecto.
 
-Nuestra motivación es acercar nuestras experiencias, en función de las inquietudes de la comunidad científica, en una serie de talleres para entablar una construcción colaborativa de conocimiento.
+La motivación surge de acercar nuestras experiencias dentro de las inquietudes de la comunidad científica para entablar una construcción colaborativa de conocimiento.
 
 Organizamos talleres de herramientas open source accesibles a toda la comunidad. Nuestros interés es que los talleres sean abiertos, inclusivos, e interactivos.
 
