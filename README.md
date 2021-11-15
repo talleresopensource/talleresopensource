@@ -19,4 +19,4 @@ La mayoría de nuestros materiales tienen licencia [CC BY-SA](https://creativeco
 
 ---
 
-Para conocer las necesidades de la comunidad, cada tanto realizamos encuestas. Los resultados y un análisis muy preliminar se encuentran [acá](https://github.com/talleresopensource/talleresopensource/blob/master/encuestas/2020-07/2020-07_encuesta_inicial.md).
+Para conocer las necesidades de la comunidad, cada tanto realizamos encuestas. Los resultados y un análisis preliminar se encuentran [acá](https://github.com/talleresopensource/talleresopensource/blob/master/encuestas/2020-07/2020-07_encuesta_inicial.md).
