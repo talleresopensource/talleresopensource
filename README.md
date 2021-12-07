@@ -4,7 +4,7 @@ Nuestra visión es empoderar a la comunidad científica hispanoparlante con cont
 
 La motivación surge de acercar nuestras experiencias dentro de las inquietudes de la comunidad científica para entablar una construcción colaborativa de conocimiento.
 
-Organizamos talleres de herramientas open source accesibles a toda la comunidad. Nuestros interés es que los talleres sean abiertos, inclusivos, e interactivos.
+Organizamos talleres de herramientas open source accesibles a toda la comunidad. Nuestro interés es que los talleres sean abiertos, inclusivos, e interactivos.
 
 * Abiertos: que las herramientas seleccionadas sean en lo posible [open source](https://opensource.org/docs/osd).
 * Inclusivos: que las plataformas de acceso al material no tengan restricciones al público.
@@ -13,7 +13,7 @@ Organizamos talleres de herramientas open source accesibles a toda la comunidad.
 Las clases de nuestros talleres están disponibles en [nuestro canal de YouTube](https://https://www.youtube.com/channel/UCz3w8tadwU5hGbH4RX1Gkzg).
 Los materiales están disponibles en este repositorio de GitHub.
 
-Tenemos un [servidor de Discord](https://discord.gg/vCTqvDeXts) para interactuar. No olvides seguir nuestro Código de Conducta.
+Tenemos un [servidor de Discord](https://discord.gg/vCTqvDeXts) para interactuar. No olvides seguir nuestro [Código de Conducta](https://github.com/talleresopensource/talleresopensource/blob/master/C%C3%B3digo%20de%20Conducta.pdf).
 
 La mayoría de nuestros materiales tienen licencia [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/legalcode), por lo que podés compartirlos y adaptarlos siempre y cuando des la atribución correspondiente y los compartas de la misma manera.
 
